@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Notre carte ♥{% endblock %}
+
+{% block body %}
+
+<div class="menus-wrapper">
+{% for menu in menus %}
+    <div class="menu-card">
+        <h2>{{ menu.name }} – {{ menu.price }} €</h2>
+        <p>{{ menu.description }}</p>
+
+        {% for label, plates in {
+            'Entrées': menu.getEntrees(),
+            'Plats':    menu.getPlats(),
+            'Desserts': menu.getDesserts()
+        } %}
+            <h3>{{ label }}</h3>
+
+            <div class="scroll-container">
+                {% for plate in plates %}
+                    <div class="jaquette-container">
+                        <div class="jaquette">
+                            <img src="{{ asset('images/' ~ plate.imageSpine) }}" class="spine"  alt="Spine">
+                            <div class="description">{{ plate.description }}</div>
+                            <img src="{{ asset('images/' ~ plate.imageFront) }}" class="front" alt="Front">
+                        </div>
+                    </div>
+                {% else %}
+                    <p class="empty-msg">Aucun {{ label|lower }} ajouté pour ce menu.</p>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>Aucun menu disponible pour le moment.</p>
+{% endfor %}
+</div>
+{% endblock %}

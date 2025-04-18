@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Informations de réservation{% endblock %}
+
+{% block body %}
+<div class="container mt-page">
+    <h1 class="admin-title">Vos coordonnées</h1>
+
+    {{ form_start(form) }}
+
+    <div class="form-group-step3">
+        {{ form_label(form.civilite) }}
+        {{ form_widget(form.civilite) }}
+        {{ form_errors(form.civilite) }}
+    </div>
+
+    <div class="form-wrapper">
+        <div class="form-group">
+            {{ form_label(form.prenom) }}
+            {{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.prenom) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.nom) }}
+            {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.nom) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.telephone) }}
+            {{ form_widget(form.telephone, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.telephone) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.email) }}
+            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.email) }}
+        </div>
+
+        <div class="submit-section">
+            <button type="submit" class="btn-purple">Réserver</button>
+        </div>
+    </div>
+
+    {{ form_end(form) }}
+</div>
+{% endblock %}

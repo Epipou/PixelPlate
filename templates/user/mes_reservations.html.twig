@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes réservations{% endblock %}
+
+{% block body %}
+
+
+{% set today = "now"|date("Y-m-d") %}
+
+<h1 class="admin-title">Mes réservations</h1>
+
+<div class="container-reservation">
+<h2>À venir</h2>
+{% set a_venir = reservations|filter(r => r.date|date('Y-m-d') >= today) %}
+{% if a_venir is not empty %}
+    <ul class="reservation-list">
+        {% for r in a_venir %}
+            <li class="reservation-card">
+                <strong>{{ r.date|date('d/m/Y') }}</strong> à {{ r.horaire }} – 
+                {{ r.nbCouverts }} couverts – Tables : 
+                {% for table in r.tables %}{{ table.name }}{% if not loop.last %}, {% endif %}{% endfor %}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Aucune réservation à venir.</p>
+{% endif %}
+
+</div>
+
+<hr>
+
+<div class="container-reservation">
+<h2>Passées</h2>
+{% set passees = reservations|filter(r => r.date|date('Y-m-d') < today) %}
+{% if passees is not empty %}
+    <ul class="reservation-list">
+        {% for r in passees %}
+            <li class="reservation-card">
+                <strong>{{ r.date|date('d/m/Y') }}</strong> à {{ r.horaire }} – 
+                {{ r.nbCouverts }} couverts – Tables : 
+                {% for table in r.tables %}{{ table.name }}{% if not loop.last %}, {% endif %}{% endfor %}
+            </li>
+        {% endfor %}
+    </ul>
+
+{% else %}
+    <p>Aucune réservation passée.</p>
+{% endif %}
+</div>
+{% endblock %}

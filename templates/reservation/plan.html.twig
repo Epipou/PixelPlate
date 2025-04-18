@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Choix des couverts{% endblock %}
+
+{% block body %}
+<h1 style="text-align:center;">Sélectionnez vos places</h1>
+
+<div id="compteur" style="text-align:center; margin-bottom: 15px;">
+    <strong>Places à sélectionner :</strong> <span id="selectionsRestantes">0</span>
+</div>
+
+<div class="salle">
+    {% for i in 1..13 %}
+        <div class="table" data-table="{{ i }}">
+            <div class="table-label">Table {{ i }}</div>
+            {% set nbCouverts = i <= 4 ? 6 : (i <= 8 ? 4 : 2) %}
+            {% for j in 1..nbCouverts %}
+                <div class="couvert" data-id="t{{ i }}c{{ j }}"></div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+
+<button id="validerSelection" disabled style="margin-top: 20px;">Valider la sélection</button>
+{% endblock %}

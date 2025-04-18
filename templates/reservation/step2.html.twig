@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Choix des places{% endblock %}
+
+{% block body %}
+<div class="container mt-page">
+    <h1 class="admin-title">Choisissez vos places</h1>
+
+    <div class="reservation-infos">
+        <p><strong>Date :</strong> {{ date }} — <strong>Horaire :</strong> {{ horaire }}</p>
+        <p><strong>Places à sélectionner :</strong> <span id="counter">{{ couverts }}</span></p>
+    </div>
+
+    <div id="error-message" class="reservation-error"></div>
+
+    <form id="reservation-form" method="POST" action="{{ path('reservation_step2_process') }}">
+        <input type="hidden" name="date" value="{{ date }}">
+        <input type="hidden" name="horaire" value="{{ horaire }}">
+        <input type="hidden" name="couverts" value="{{ couverts }}">
+
+        <div class="room">
+            {% for table in tables %}
+                <div class="table" data-table="{{ table.id }}">
+                    <p class="table-label">{{ table.name }} ({{ table.capacity }} places)</p>
+                    <div class="seats">
+                        {% for i in 1..table.capacity %}
+                            {% set is_taken = occupied_seats[table.id] is defined and i in occupied_seats[table.id] %}
+                            <div class="seat {{ is_taken ? 'disabled' : '' }}"
+                                 data-table="{{ table.id }}"
+                                 data-seat="{{ i }}">
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="submit-section">
+            <input type="hidden" name="selected_seats" id="selected-seats">
+            <button type="submit" id="next-step" class="btn-purple" disabled>Suivant</button>
+        </div>
+    </form>
+</div>
+
+<script src="{{ asset('js/app.js') }}"></script>
+{% endblock %}

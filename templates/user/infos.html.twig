@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes informations personnelles{% endblock %}
+
+{% block body %}
+<div class="admin-carte-container">
+    <h1 class="admin-title">Mes informations personnelles</h1>
+
+    <div class="container-form-bloc">
+        <ul class="user-infos-list">
+            <li><strong>Civilité :</strong> {{ user.civilite }}</li>
+            <li><strong>Nom :</strong> {{ user.nom }}</li>
+            <li><strong>Prénom :</strong> {{ user.prenom }}</li>
+            <li><strong>Email :</strong> {{ user.email }}</li>
+            <li><strong>Téléphone :</strong> {{ user.telephone }}</li>
+        </ul>
+
+        <form action="{{ path('user_delete_account') }}" method="post"
+              onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.');">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete_account') }}">
+            <button type="submit" class="danger-btn">Supprimer mon compte</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

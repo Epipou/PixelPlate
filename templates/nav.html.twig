@@ -1,0 +1,60 @@
+<nav class="navbar">
+    <div class="navbar-column navbar-left">
+        <a href="{{ path('home') }}" class="nav-link">Accueil</a>
+        <a href="{{ path('carte_vitrine') }}" class="nav-link">La carte</a>
+    </div>
+
+    <div class="navbar-column navbar-center">
+        <a href="{{ path('home') }}">
+            <img src="{{ asset('images/logoPP.png') }}" alt="Logo" class="navbar-logo">
+        </a>
+    </div>
+
+    <div class="navbar-column navbar-right">
+        <a href="{{ path('reservation_nouvelle') }}" class="nav-link">Réserver en ligne</a>
+
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('admin_reservations') }}" class="nav-link">Voir les réservations</a>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="user-menu">
+                <i class="fas fa-user-circle"></i>
+                <ul class="user-dropdown">
+                    <li><a href="{{ path('user_reservations') }}">Mes réservations</a></li>
+                    <li><a href="{{ path('user_infos') }}">Mes infos perso</a></li>
+                    <li><a href="{{ path('user_edit_infos') }}">Modifier mes infos</a></li>
+                    <li><a href="{{ path('app_change_password') }}">Modifier mon mot de passe</a></li>
+                    <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
+                </ul>
+            </div>
+        {% else %}
+            <a href="{{ path('app_login') }}" class="nav-link">Connexion</a>
+        {% endif %}
+    </div>
+</nav>
+
+<nav class="navbarbottom">
+    <div class="navbar-social">
+        <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://tiktok.com" target="_blank" title="X/TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="https://discord.com" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
+
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('admin_dashboard') }}" class="nav-link">Dashboard</a>
+        {% endif %}
+
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('admin_carte') }}" class="nav-link">Gérer la carte</a>
+        {% endif %}
+    </div>
+
+    <div class="navbar-connexion">
+        {% if not app.user %}
+            <a href="{{ path('app_register') }}" class="nav-link">Inscription</a>
+        {% else %}
+            <span>Bienvenue {{ app.user.name }}</span>
+        {% endif %}
+    </div>
+</nav>

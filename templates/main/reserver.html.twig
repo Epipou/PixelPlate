@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réserver une table{% endblock %}
+
+{% block body %}
+<h1>Réservation en ligne</h1>
+
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success">{{ message }}</div>
+{% endfor %}
+
+{{ form_start(form) }}
+    {{ form_row(form.nbCouverts) }}
+    {{ form_row(form.date) }}
+    {{ form_row(form.horaire) }}
+    {{ form_row(form.civilite) }}
+    {{ form_row(form.prenom) }}
+    {{ form_row(form.nom) }}
+    {{ form_row(form.telephone) }}
+    {{ form_row(form.email) }}
+
+    <button type="submit">Réserver</button>
+{{ form_end(form) }}
+{% endblock %}

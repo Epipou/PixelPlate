@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion de la carte{% endblock %}
+
+{% block body %}
+<div class="admin-carte-container">
+
+    {% for message in app.flashes('success') %}
+        <div class="alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="admin-forms-wrapper">
+        <div class="admin-form-block">
+            <h2>Ajouter un plat</h2>
+            {{ form_start(plateForm, {
+                'attr': { 'enctype': 'multipart/form-data', 'id': 'form_plate' }
+            }) }}
+                {{ form_row(plateForm.name) }}
+                {{ form_row(plateForm.description) }}
+                {{ form_row(plateForm.imageSpine) }}
+                {{ form_row(plateForm.imageFront) }}
+                <button type="submit" class="btn-purple">Ajouter le plat</button>
+            {{ form_end(plateForm) }}
+        </div>
+
+        <div class="admin-form-block">
+            <h2>Ajouter un menu</h2>
+            {{ form_start(menuForm, { 'attr': { 'id': 'form_menu' }}) }}
+                {{ form_row(menuForm.name) }}
+                {{ form_row(menuForm.price) }}
+                {{ form_row(menuForm.description) }}
+                {{ form_row(menuForm.entrees) }}
+                {{ form_row(menuForm.plats) }}
+                {{ form_row(menuForm.desserts) }}
+                <button type="submit" class="btn-purple">Ajouter le menu</button>
+            {{ form_end(menuForm) }}
+        </div>
+    </div>
+
+    <hr style="margin: 40px 0;">
+
+    <div class="admin-lists-wrapper">
+        <div class="admin-table-section">
+            <h2>Liste des Plats</h2>
+            <table class="table-resa">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for plate in plates %}
+                        <tr>
+                            <td>{{ plate.name }}</td>
+                            <td>{{ plate.description }}</td>
+                            <td>
+                                <form method="POST" action="{{ path('admin_delete_plate', { id: plate.id }) }}" onsubmit="return confirm('Supprimer ce plat ?');">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete_plate_' ~ plate.id) }}">
+                                    <button type="submit" class="icon-button" title="Supprimer">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr><td colspan="3">Aucun plat enregistré.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="admin-table-section">
+            <h2>Liste des Menus</h2>
+            <table class="table-resa">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prix</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for menu in menus %}
+                        <tr>
+                            <td>{{ menu.name }}</td>
+                            <td>{{ menu.price }} €</td>
+                            <td>{{ menu.description }}</td>
+                            <td>
+                                <form method="POST" action="{{ path('admin_delete_menu', { id: menu.id }) }}" onsubmit="return confirm('Supprimer ce menu ?');">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete_menu_' ~ menu.id) }}">
+                                    <button type="submit" class="icon-button" title="Supprimer">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr><td colspan="4">Aucun menu enregistré.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

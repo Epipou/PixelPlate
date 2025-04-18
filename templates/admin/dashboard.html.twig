@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard - Gestion des rôles{% endblock %}
+
+{% block body %}
+    <div class="dashboard-container">
+        <h1 class="dashboard-title">Gestion des rôles</h1>
+
+        <form method="get" action="{{ path('admin_dashboard') }}" class="dashboard-search">
+            <input type="text" name="search" placeholder="Rechercher un utilisateur..." value="{{ search }}">
+            <button type="submit">Rechercher</button>
+        </form>
+
+        <table class="table-resa">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Rôles</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.roles|join(', ') }}</td>
+                        <td>
+                            <a href="{{ path('admin_edit_roles', {'id': user.id}) }}" class="action-link">Modifier</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">Aucun utilisateur trouvé.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            {{ knp_pagination_render(users) }}
+        </div>
+    </div>
+{% endblock %}

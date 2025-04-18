@@ -1,0 +1,825 @@
+/*Navbar*/
+.navbar {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    max-width: 1200px;
+    border-radius: 15px;
+    margin: auto;
+    padding: 10px 30px;
+    background-color: #ffffffea;
+    box-shadow: 0 2px 4px rgba(212, 196, 196, 0.05);
+    position: fixed; 
+    top: 0; 
+    left: 50%;   
+    transform: translateX(-50%);     
+    z-index: 10;   
+}
+
+.navbar-column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-link:hover{
+    color: #bf22e6;
+}
+
+.navbar-left {
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+.navbar-right {
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.navbar-center {
+    justify-content: center;
+}
+
+.navbar-logo {
+    height: 180px;  
+    margin-bottom: -160px;
+    z-index: 10000;
+}
+
+
+.navbarbottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    max-width: 1100px;
+    border-radius: 15px;
+    padding: 10px 30px;
+    background-color: #ffffffec;
+    box-shadow: 0 2px 4px rgba(212, 196, 196, 0.05);
+    position: fixed; 
+    top: 46px;  
+    left: 50%;   
+    transform: translateX(-50%);       
+    z-index: 9;
+}
+
+.navbar-social {
+    display: flex;
+    gap: 6px;
+    
+}
+
+.navbar-connexion {
+    display:flex;
+    gap: 12px;
+}
+
+.navbar-social i {
+    font-size: 1.2em;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.navbar-social i:hover {
+    color: #bf22e6;
+}
+
+/* Inscription */
+.container-form-bloc {
+    background-color: rgba(255, 255, 255, 0.92);
+    border: 1px solid #ddd;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 500px;
+    margin: 40px auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+
+/* Menu déroulant utilisateurs */
+.user-menu {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.user-menu i {
+    font-size: 1.5em;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.user-menu:hover i {
+    color: #bf22e6;
+}
+
+.user-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0;
+    margin: 0;
+    min-width: 200px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    list-style: none;
+}
+
+.user-menu:hover .user-dropdown {
+    display: block;
+}
+
+.user-dropdown li a {
+    display: block;
+    padding: 12px 16px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.user-dropdown li a:hover {
+    background-color: #bf22e6;
+}
+
+/* Vu des informations perso côté clients */
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 30px;
+}
+
+.container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.container li {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+/* Changements des informations persos côté clients */
+.form-group {
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 3px rgb(255, 255, 255); 
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+.form-group .form-control {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.form-error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+/* Suppression du compte côté client */
+.danger-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.danger-btn:hover {
+    background-color: #c0392b;
+}
+
+
+/* Vue des réservations côté clients */
+.container-reservation{
+    background-color: rgba(255, 255, 255, 0.92);
+    border: 1px solid #ddd;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 500px;
+    margin: 40px auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+.reservation-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.reservation-card {
+    padding: 12px 18px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s;
+}
+
+.reservation-card:hover {
+    background-color: #f0f0f0;
+}
+
+/* Changements du mot de passe côté client */
+
+.container-edit-password{
+    background-color: rgba(255, 255, 255, 0.92);
+    border: 1px solid #ddd;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 500px;
+    margin: 40px auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+
+}
+.form-group.row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.form-label {
+    flex: 0 0 230px;
+    font-weight: bold;
+}
+
+.form-field {
+    flex: 1;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.alert {
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+.alert-success {
+    background-color: #dff0d8;
+    color: #3c763d;
+}
+
+.alert-error {
+    background-color: #f2dede;
+    color: #a94442;
+}
+
+/*Page Principal*/
+.index-overlay h1 {
+    color: black;  
+}
+
+.index-overlay h1:hover {
+    color: #e67e22; 
+}
+
+p {
+    color : black;
+}
+
+.image-background {
+    position: fixed; /* au lieu de relative */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.image-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+}
+
+#page-content {
+    margin-top: 200px;
+    position: relative;
+    z-index: 1;
+}
+
+.index-overlay {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    padding: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.index-overlay h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.index-overlay p {
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+/** templates/main/carte.html.twig **/
+.carte-title {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.menus-wrapper {
+    margin-top: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 80px;             
+    justify-content: center;
+}
+
+
+.menu-card {
+    flex: 0 1 calc(50% - 40px);   
+    max-width: 800px;             
+    padding: 20px;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+
+.menu-card h2,
+.menu-card > p {
+    text-align: center;
+}
+
+.empty-msg {
+    color: #808080;
+    font-style: italic;
+    text-align: center;
+}
+
+.jaquette-container {
+    position: relative;
+    display: inline-block;
+    width: 190px;
+    height: 190px;
+    margin: 10px;
+}
+
+.jaquette {
+    position: relative;
+    width: 190px;
+    height: 190px;
+    display: flex;
+    background-color: transparent;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Partie gauche : spine */
+.spine {
+    width: 15px;
+    height: 190px;
+    object-fit: cover;
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+/* Partie droite : description */
+.description {
+    padding: 10px;
+    font-size: 13px;
+    color: #333;
+    flex: 1;
+    overflow: hidden;
+    z-index: 1;
+    position: relative;
+}
+
+/* Image front */
+.front {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 190px;
+    height: 190px;
+    object-fit: cover;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.jaquette:hover .front {
+    opacity: 1;
+}
+
+
+/* Plan de tables */
+.salle {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.table-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.couvert {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 3px;
+    background-color: grey;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.couvert.selected {
+    background-color: green;
+}
+
+.couvert.disabled {
+    background-color: red;
+    cursor: not-allowed;
+}
+
+.room {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.table {
+    border: 2px solid #333;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #f2f2f2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: calc(var(--seats) * 30px);
+}
+
+/* Erreur de sélection */
+.reservation-error {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Carte de table */
+.table {
+    border: 2px solid #444;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+    background: #f5f5f5;
+    border-radius: 8px;
+}
+
+/* Conteneur des sièges */
+.seats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.seat {
+    width: 20px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.seat.unavailable {
+    background-color: #c0392a;
+    pointer-events: none;
+}
+
+.seat.selected {
+    background-color: #4caf50;
+}
+
+.seat.disabled {
+    background-color: #e74c3c;
+    pointer-events: none;
+}
+
+/* Section du bouton suivant */
+.submit-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#next-step {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Tableau des réservations côté admin */
+.table-resa {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fafafade;
+    margin: 25px 0;
+    font-size: 0.95rem;
+}
+
+.table-resa th,
+.table-resa td {
+    padding: 10px 12px;
+    border: 1px solid #e0e0e0;
+    text-align: left;
+}
+
+.table-resa thead {
+    background: #fafafade;
+    font-weight: 600;
+}
+
+/* actions (icônes) */
+.action-link {
+    text-decoration: none;
+    margin-right: 8px;
+    font-size: 1.1rem;
+    transition: color .2s;
+}
+
+.action-link:hover {
+    color: #e67e22;
+}
+
+
+.icon-button {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: inherit;
+}
+
+.icon-button:hover {
+    color: #bf22e6; 
+}
+
+/* Dashboard Admin */
+.dashboard-container {
+    max-width: 1000px;
+    margin: 200px auto 50px auto; /* décalage sous la navbar */
+    padding: 20px;
+    background: #fafafade;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.dashboard-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.dashboard-search {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.dashboard-search input[type="text"] {
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 300px;
+}
+
+.dashboard-search button {
+    padding: 8px 16px;
+    background-color: #bf22e6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.dashboard-search button:hover {
+    background-color: #6d1783;
+}
+
+/* Edit-roles Admin */
+.role-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1rem;
+}
+
+.checkbox-group label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-orange {
+    padding: 10px 20px;
+    background-color: #bf22e6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-orange:hover {
+    background-color: #bf22e6;
+}
+
+/* Cartes & Menu Admin */
+.admin-carte-container {
+    max-width: 1200px;
+    margin: 100px auto 40px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.admin-title {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.8); 
+}
+
+.admin-forms-wrapper {
+    display: flex;
+    gap: 60px;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+.admin-form-block {
+    flex: 1;
+    min-width: 350px;
+    background: #fafafade;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.admin-form-block h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.btn-purple {
+    background-color: #bf22e6;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-purple:hover {
+    background-color: #9d1cc2;
+}
+
+.alert-success {
+    background-color: #dff0d8;
+    color: #3c763d;
+    padding: 12px 20px;
+    border-radius: 6px;
+    border: 1px solid #c3e6cb;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Tableaux de plats et menus */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+}
+
+.admin-table-section{
+    background: #fafafade;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.admin-table th {
+    background: #fafafade;
+}
+
+.admin-table td img {
+    height: 50px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.delete-form button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.delete-form button:hover {
+    background-color: #c0392b;
+}
+
+/* Reservation step 1 2 3 */
+.mt-page {
+    margin-top: 120px;
+}
+
+.form-reservation {
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 30px;
+    max-width: 700px;
+    margin: auto;
+}
+
+.reservation-infos {
+    transform: translateX(+80%);      
+    background: #fafafaa8;
+    width: 300px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+.form-group-step3 {
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.8); 
+}
