@@ -153,16 +153,16 @@
     max-width: 800px;
     margin: auto;
     padding: 30px;
-}
 
-.container ul {
-    list-style: none;
-    padding: 0;
-}
-
-.container li {
-    margin-bottom: 10px;
-    font-size: 1.1em;
+    ul {
+        list-style: none;
+        padding: 0;
+        
+        li {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+    }
 }
 
 /* Changements des informations persos côté clients */
